@@ -15,6 +15,8 @@ RUN npm ci
 
 # Copy source code
 COPY . /app/
+# Remove the spurious CR characters (for windows)
+RUN sed -i -e 's/\r$//' ./wait-for
 
 # Define default command
 CMD npm test
